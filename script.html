@@ -1,0 +1,127 @@
+<html>
+<head>
+    <SCRIPT LANGUAGE="JavaScript">
+    function round(value, decimals) {   //the function to round a number to a certain number of decimals
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+}
+
+    function myFunction(form) {
+    var x = form.x.value;
+    var y = form.y.value;
+    var z = form.z.value;
+    var finalWeight = z / 100;
+    var gradeWeight = 1 - finalWeight;
+    var need = round(((y - (x * gradeWeight)) / (finalWeight)), 2); //will round the calculated number to 2 decimals 
+    var message 
+    
+    if (need<70) {
+            var message = "You don't even need to bother studying."
+        }
+        
+    if (70<need<80) {
+            var message = "Things could be worse."
+        }
+        
+      if (80<need<94) {
+            var message = "You'll do fine."
+        }
+        
+    if (94<need<100) {
+            var message = "Good luck!"
+        }
+    
+    if (need>100) {
+            var message = "Just give up."
+        }
+             
+    if (isNaN(x)||x=="" && isNaN(y)||y=="" && isNaN(z)||z=="") { //if all the fields are empty or not numbers
+    alert ("Please fill out the form"); 
+}
+
+else {
+    alert ("You need a " + need + "% on the final to get at least a " +y+ "% in the class. " + message);
+}
+
+}
+    </script>
+    
+<!-- the font, pulled from Google fonts using their API-->
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto">
+<meta name="theme-color" content="#ffffff">
+
+
+<title> 
+Final Grade Calculator 
+</title> 
+	<style>
+
+p.one {
+		font-family: 'Roboto', sans-serif;
+		font-size: 3em;
+		font-weight: bold;
+		color: #FFFFFF;
+   	text-align: center;   
+		background-image: url("footer_lodyas.png"); 
+		background-repeat: repeat-x,y;
+}
+
+body { background-image: url("footer_lodyas.png"); 
+		background-repeat: repeat-x,y;
+
+}
+
+form{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    font-weight: bold;
+    color: #FFFFFF;
+    float: left;
+    clear: left;
+    margin-left:550px;
+    width: 250px;
+    text-align: center;
+}
+        
+    input.field{
+    font-family: 'Roboto', sans-serif;
+	  font-size: 1em;
+    color: black;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: left;
+}
+
+    input.button{
+    font-family: 'Roboto', sans-serif;
+	  font-size: 1em;
+    color: black;
+    float: left;
+    clear: left;
+    width: 250px;
+    text-align: center;
+}
+
+	</style>
+</head>
+
+<body>
+
+<form>
+    Your current grade (%):
+    <input class="field" type="text" maxlength="4" name="x" value=""/>
+    <br>
+    You want at least a (%): 
+    <input class="field" type="text" maxlength="4" name="y" value=""/>
+    <br>
+    Your final is worth (%):
+    <input class="field" type="text" maxlength="4" name="z" value=""/>
+     <br>
+        <input class="button" type="submit" value="What do I need on my final?" onClick="myFunction(this.form)">
+</form>
+
+
+
+ 		
+</body>
+</html>
